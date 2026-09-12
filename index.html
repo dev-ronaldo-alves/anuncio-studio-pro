@@ -81,6 +81,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .kpi--purple .kpi__icon{background:var(--purple-bg);color:var(--purple)}
 .kpi--success .kpi__icon{background:var(--success-bg);color:var(--success)}
 .kpi--pink .kpi__icon{background:var(--pink-bg);color:var(--pink)}
+.kpi--brand .kpi__icon{background:var(--brand-bg);color:var(--brand)}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
 .panel-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .panel-card__head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -226,7 +227,6 @@ dialog::backdrop{background:rgba(20,20,20,.55);backdrop-filter:blur(3px)}
 .field{display:flex;flex-direction:column;gap:5px}
 .field label{font-size:.74rem;font-weight:650;color:var(--muted)}
 .field--full{grid-column:1/-1}
-/* Copy library */
 .copy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
 .copy-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;transition:all .15s;position:relative;display:flex;flex-direction:column;gap:8px}
 .copy-card:hover{border-color:var(--brand);box-shadow:var(--shadow-soft)}
@@ -245,7 +245,6 @@ dialog::backdrop{background:rgba(20,20,20,.55);backdrop-filter:blur(3px)}
 .copy-cat-chip:hover{background:var(--gray);color:var(--text)}
 .copy-cat-chip.is-active{background:var(--brand);color:#fff;border-color:var(--brand)}
 .copy-cat-chip .n{font-size:.66rem;opacity:.7;margin-left:4px}
-/* Image upload */
 .image-upload{border:2px dashed var(--border-strong);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:all .15s;background:var(--panel)}
 .image-upload:hover{border-color:var(--brand);background:var(--brand-bg)}
 .image-upload.is-dragover{border-color:var(--brand);background:var(--brand-bg)}
@@ -260,13 +259,11 @@ dialog::backdrop{background:rgba(20,20,20,.55);backdrop-filter:blur(3px)}
 .image-item__primary{position:absolute;bottom:6px;left:6px;font-size:.6rem;font-weight:750;background:var(--brand);color:#fff;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:.05em}
 .image-note{font-size:.72rem;color:var(--muted);margin-top:8px;display:flex;align-items:flex-start;gap:6px;line-height:1.5}
 .image-note svg{width:13px;height:13px;flex-shrink:0;margin-top:2px;color:var(--info)}
-/* Product type filter */
 .type-filter{display:flex;gap:6px;flex-wrap:wrap}
 .type-chip{padding:6px 14px;background:#fff;border:1px solid var(--border);border-radius:99px;font-size:.76rem;font-weight:650;color:var(--muted);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
 .type-chip:hover{background:var(--gray);color:var(--text)}
 .type-chip.is-active{background:var(--black);color:#fff;border-color:var(--black)}
 .type-chip .ic{font-size:.85rem}
-/* Suggestion for physical/digital specific fields */
 .product-fields{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:16px}
 .product-fields__title{font-size:.72rem;font-weight:750;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .product-fields__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -508,10 +505,9 @@ const CATS={
 const TYPE_ICONS={fisico:'📦',digital:'💾',servico:'🔧',geral:'📝',infoproduto:'🎓'};
 
 /* =========================================================================
-   250 TEMPLATES — formato compacto: [nome, cat, desc, tipo, conteudo]
+   250 TEMPLATES
    ========================================================================= */
 const T_RAW=[
-/* === PROMOÇÃO (25) === */
 ['Promoção Relâmpago','promocao','Queima de estoque urgente','geral',`🔥 PROMOÇÃO RELÂMPAGO 🔥
 
 🚨 ATENÇÃO! Só hoje!
@@ -868,8 +864,6 @@ Antes: R$ {{PRECO_ORIGINAL}}
 📍 {{LOCAL}}
 
 #ofertadodia #promocao`],
-
-/* === PRODUTO FÍSICO (30) === */
 ['Lançamento Físico','fisico','Novo produto no catálogo','fisico',`✨ NOVIDADE NA LOJA ✨
 
 Chegou {{PRODUTO}}!
@@ -1273,8 +1267,6 @@ Quer revender {{PRODUTO}}?
 
 📱 {{WHATSAPP}}
 #revenda #oportunidade`],
-
-/* === PRODUTO DIGITAL (30) === */
 ['Lançamento Digital','digital','Novo produto digital','digital',`🚀 LANÇAMENTO 🚀
 
 Chegou {{PRODUTO}}!
@@ -1712,8 +1704,6 @@ Tudo o que você precisa em um só lugar!
 
 🔗 {{LINK}}
 #pacotecompleto #{{HASHTAG}}`],
-
-/* === SERVIÇO (20) === */
 ['Prestação de Serviço','servico','Divulgação profissional','servico',`🔧 {{SERVICO}} em {{LOCAL}} 🔧
 
 Somos especialistas em {{ESPECIALIDADE}}!
@@ -2005,8 +1995,6 @@ Transforme sua vida em {{DURACAO}}!
 📱 {{WHATSAPP}}
 
 #coach #{{HASHTAG}}`],
-
-/* === EVENTO (15) === */
 ['Divulgação de Evento','evento','Evento presencial','geral',`🎉 {{NOME_EVENTO}} 🎉
 
 Você está convidado!
@@ -2267,8 +2255,6 @@ O maior evento de {{AREA}} do ano!
 📲 {{LINK}}
 
 #conferencia #{{HASHTAG}}`],
-
-/* === EMPREGO (12) === */
 ['Vaga de Emprego','emprego','Vaga formal','geral',`💼 VAGA: {{CARGO}} 💼
 
 Estamos contratando para {{EMPRESA}}!
@@ -2474,8 +2460,6 @@ Indique alguém para a vaga de {{CARGO}}!
 💬 {{WHATSAPP}}
 
 #indicacao #vaga`],
-
-/* === IMÓVEL (15) === */
 ['Venda de Imóvel','imovel','Imóvel para venda','geral',`🏠 {{TIPO}} PARA VENDA EM {{BAIRRO}} 🏠
 
 📐 Área: {{AREA}} m²
@@ -2711,8 +2695,6 @@ Descubra quanto vale seu imóvel!
 
 📲 Agende: {{WHATSAPP}}
 #avaliacao #imovel`],
-
-/* === CURSO ONLINE (25) === */
 ['Curso Completo','curso','Formação completa','digital',`🎓 CURSO COMPLETO DE {{TEMA}} 🎓
 
 Domine {{AREA}} em {{DURACAO}}!
@@ -3079,8 +3061,6 @@ Venda todos os dias pela internet!
 🔗 {{LINK}}
 
 #vendasonline #curso`],
-
-/* === E-BOOK (15) === */
 ['E-book Completo','ebook','Guia completo','digital',`📖 E-BOOK: {{TITULO}} 📖
 
 {{PAGINAS}} páginas de puro conteúdo!
@@ -3311,8 +3291,6 @@ Reunimos o melhor em um só lugar!
 🔗 {{LINK}}
 
 #coletanea #{{HASHTAG}}`],
-
-/* === MENTORIA (12) === */
 ['Mentoria Individual','mentoria','Mentoria 1 a 1','digital',`🎯 MENTORIA INDIVIDUAL 🎯
 
 {{N}} vagas para acompanhamento pessoal!
@@ -3490,8 +3468,6 @@ Suporte contínuo para {{OBJETIVO}}!
 🔗 {{LINK}}
 
 #mentoriaonline #{{HASHTAG}}`],
-
-/* === SAAS/APP (15) === */
 ['Lançamento de App','saas','Novo aplicativo','digital',`📱 LANÇAMENTO: {{NOME_APP}} 📱
 
 O app que vai mudar sua rotina!
@@ -3718,8 +3694,6 @@ Automatize os pedidos do seu restaurante!
 🔗 {{LINK}}
 
 #delivery #restaurante`],
-
-/* === COMUNIDADE (10) === */
 ['Convite para Grupo','comunidade','Novo grupo','geral',`👥 NOVO GRUPO: {{NOME_GRUPO}} 👥
 
 Criei um espaço para {{TEMA}}!
@@ -3864,8 +3838,6 @@ Tire dúvidas sobre {{TEMA}} com outros usuários!
 📱 {{WHATSAPP}}
 
 #suporte #grupo`],
-
-/* === FREELANCER (10) === */
 ['Divulgação Freelancer','freela','Serviços de freelancer','servico',`💼 {{PROFISSAO}} DISPONÍVEL 💼
 
 Olá! Sou {{SEU_NOME}} e atuo com {{PROFISSAO}} há {{TEMPO}}.
@@ -4025,8 +3997,6 @@ Reforço de {{MATERIA}}!
 📱 {{WHATSAPP}}
 
 #professor #aulas`],
-
-/* === INDICAÇÃO (8) === */
 ['Programa de Indicação','indicacao','Recompensa por indicação','geral',`🎁 PROGRAMA DE INDICAÇÃO 🎁
 
 Indique um amigo e ganhe!
@@ -4130,8 +4100,6 @@ Venda nossos produtos e ganhe comissão!
 
 📱 {{WHATSAPP}}
 #consultor #rendaextra`],
-
-/* === INSTITUCIONAL (10) === */
 ['Apresentação da Empresa','institucional','Apresentação institucional','geral',`👋 OLÁ, GRUPO! 👋
 
 Somos a {{EMPRESA}}, especializada em {{ESPECIALIDADE}}.
@@ -4224,7 +4192,7 @@ Um pouco do nosso dia a dia!
 
 Temos uma grande notícia!
 
-{{DESCRICAO_NOV})
+{{DESCRICAO_NOV}}
 {{DESCRICAO_EXTRA}}
 
 🎯 O que muda pra você:
@@ -4270,8 +4238,6 @@ A novidade chega em breve!
 📱 {{WHATSAPP}}
 
 #parceria #{{HASHTAG}}`],
-
-/* === DATAS COMEMORATIVAS (15) === */
 ['Natal','datas','Natal','geral',`🎄 FELIZ NATAL 🎄
 
 Que este Natal seja repleto de amor e alegria!
@@ -4462,8 +4428,6 @@ Aproveite os descontos!
 📱 {{WHATSAPP}}
 
 #ferias #promocao`],
-
-/* === INFOPRODUTO (15) === */
 ['Lançamento de Infoproduto','infoproduto','Lançamento digital','digital',`🚀 LANÇAMENTO: {{NOME_PRODUTO}} 🚀
 
 Chegou a novidade que você esperava!
@@ -4703,8 +4667,6 @@ Faça parte do nosso clube exclusivo!
 🔗 {{LINK}}
 
 #clube #assinantes`],
-
-/* === NICHOS (20) === */
 ['Barbearia','nicho','Serviços de barbearia','servico',`💈 BARBEARIA {{NOME}} 💈
 
 Corte, barba e estilo!
@@ -5009,555 +4971,31 @@ Tudo para seu melhor amigo!
 #petshop #pets`]
 ];
 
-/* Transform to full objects */
 const TEMPLATES=T_RAW.map((t,i)=>({
   id:'t'+(i+1),
-  name:t[0],
-  cat:t[1],
-  desc:t[2],
-  type:t[3],
-  content:t[4],
+  name:t[0],cat:t[1],desc:t[2],type:t[3],content:t[4],
   badge:i<15?'HOT':i<50?'NOVO':null
 }));
 
 /* =========================================================================
-   500 COPYS PERSUASIVAS
-   Categorias: hook, cta, urgencia, social, beneficio, objecao, fechamento
+   500 COPYS
    ========================================================================= */
 const C_RAW=[
-/* === HOOKS / HEADLINES (100) === */
-['hook','Você está deixando dinheiro na mesa sem perceber.'],
-['hook','Ninguém te contou isso sobre {{TEMA}}…'],
-['hook','A verdade que ninguém tem coragem de falar.'],
-['hook','Por que 90% das pessoas falham em {{TEMA}}?'],
-['hook','Eu não acreditava até ver com meus próprios olhos.'],
-['hook','Pare tudo o que está fazendo e leia isso.'],
-['hook','Isso mudou completamente a minha vida.'],
-['hook','Descobri o segredo depois de muito tempo.'],
-['hook','Se você faz isso, está perdendo clientes.'],
-['hook','O erro que quase me custou tudo.'],
-['hook','Como eu faturei R$ 10.000 em 30 dias.'],
-['hook','A estratégia que ninguém quer compartilhar.'],
-['hook','Isso é polêmico, mas precisa ser dito.'],
-['hook','Testei durante 30 dias — o resultado me chocou.'],
-['hook','Você só precisa de 5 minutos para entender.'],
-['hook','Se você tem mais de 30 anos, precisa ler isso.'],
-['hook','O que eu descobri depois de gastar R$ 5.000.'],
-['hook','Uma pergunta rápida: você está satisfeito com {{AREA}}?'],
-['hook','Todos dizem que é impossível — eu provei o contrário.'],
-['hook','Descobri por acidente e mudou tudo.'],
-['hook','Nunca mais farei isso do jeito antigo.'],
-['hook','Isso vai contra tudo que te ensinaram.'],
-['hook','Qual o preço de continuar do jeito que está?'],
-['hook','Eu estava errado o tempo todo.'],
-['hook','3 coisas que eu gostaria de ter sabido antes.'],
-['hook','O momento em que tudo clicou.'],
-['hook','Se eu pudesse voltar no tempo, faria isso.'],
-['hook','A diferença entre quem consegue e quem não.'],
-['hook','Vou ser sincero com você agora.'],
-['hook','Eu não vendo {{PRODUTO}} pelo dinheiro.'],
-['hook','Isso vale mais do que qualquer curso.'],
-['hook','Me responde uma coisa honestamente.'],
-['hook','O que eu aprendi em 10 anos em 10 minutos.'],
-['hook','Preciso te contar uma coisa urgente.'],
-['hook','Você já se sentiu travado com {{PROBLEMA}}?'],
-['hook','Se eu conseguir, você também consegue.'],
-['hook','Quando eu parar de fazer isso, cresci 300%.'],
-['hook','Aquele conselho que mudou minha trajetória.'],
-['hook','Não é o que você pensa.'],
-['hook','Ninguém acreditou em mim — olha onde cheguei.'],
-['hook','Descobri isso por R$ 2.000 — te conto de graça.'],
-['hook','Esse detalhe faz toda a diferença.'],
-['hook','Como resolver {{PROBLEMA}} em 7 dias.'],
-['hook','A pergunta que ninguém faz e deveria.'],
-['hook','Se você tem 5 minutos, vale a pena ler.'],
-['hook','Isso vai parecer estranho no começo.'],
-['hook','Eu travei nesse ponto por 2 anos.'],
-['hook','O que ninguém fala sobre {{TEMA}}.'],
-['hook','Fiz o teste e vou te contar o resultado.'],
-['hook','Existe um jeito mais fácil. E eu descobri.'],
-['hook','Parei de perder tempo quando entendi isso.'],
-['hook','Se você quer {{OBJETIVO}}, leia até o fim.'],
-['hook','Alerta: isso pode incomodar algumas pessoas.'],
-['hook','Vou te mostrar o atalho que ninguém mostra.'],
-['hook','Isso me economizou meses de trabalho.'],
-['hook','Sabe aquele problema? Tem solução.'],
-['hook','A estratégia proibida que funciona.'],
-['hook','Não é magia — é método.'],
-['hook','Testado e comprovado por {{N}} pessoas.'],
-['hook','Eu fiz o que todos diziam ser impossível.'],
-['hook','A virada que você estava esperando.'],
-['hook','Olha o que descobri mexendo no {{PRODUTO}}.'],
-['hook','Isso não é teoria. É prática.'],
-['hook','Pesquisei durante meses — agora vou te contar.'],
-['hook','A diferença que mudou tudo em 1 dia.'],
-['hook','Se você comete esse erro, pare agora.'],
-['hook','Foi isso que me tirou do vermelho.'],
-['hook','Duas palavras que mudaram meu negócio: {{PALAVRA}}.'],
-['hook','Como sair do {{SITUACAO_ATUAL}} para {{OBJETIVO}}.'],
-['hook','Um erro de R$ 100 virou aprendizado de R$ 10.000.'],
-['hook','Se você ainda não faz isso, comece hoje.'],
-['hook','Nunca pensei que funcionaria. Funcionou.'],
-['hook','Tem uma coisa que você não está vendo.'],
-['hook','Essa verdade dói, mas liberta.'],
-['hook','Eu quase desisti. Ainda bem que não.'],
-['hook','A ferramenta que faltava na sua vida.'],
-['hook','O que aprendi em 1 ano — em 1 minuto.'],
-['hook','Você merece saber disso.'],
-['hook','Sabe qual é o verdadeiro problema?'],
-['hook','Sem isso, você continua dando murro em ponta de faca.'],
-['hook','Você já percebeu esse padrão?'],
-['hook','Isso resolve 90% dos seus problemas com {{TEMA}}.'],
-['hook','A diferença é gritante, olha só.'],
-['hook','Você está a um clique da mudança.'],
-['hook','Nunca vi nada igual antes.'],
-['hook','Se você ainda não conhece, precisa conhecer.'],
-['hook','Foi testado. Foi aprovado. É real.'],
-['hook','O segredo está em um detalhe que todos ignoram.'],
-['hook','Vou abrir o jogo pra você.'],
-['hook','Se estivesse na minha frente, eu diria isso.'],
-['hook','A história que vai te fazer repensar tudo.'],
-['hook','É agora ou nunca.'],
-['hook','Descobri no pior momento — e serviu.'],
-['hook','Não é sobre sorte. É sobre método.'],
-['hook','Foi assim que saí de {{SITUACAO_1}} para {{SITUACAO_2}}.'],
-['hook','Um pequeno ajuste, um grande resultado.'],
-['hook','Se você me der 5 minutos, eu te mostro.'],
-['hook','O caminho é mais curto do que parece.'],
-['hook','Tem jeito. E é mais simples do que imagina.'],
-['hook','Aquele "isso não funciona" que virou "isso é incrível".'],
-['hook','Você está mais perto do que pensa.'],
-['hook','Basta dar o primeiro passo. Eu te mostro o resto.'],
-['hook','Essa é a oportunidade que você pediu.'],
-
-/* === CTA (100) === */
-['cta','Comenta "EU QUERO" e eu te chamo no PV!'],
-['cta','Chama no WhatsApp e garanta o seu: {{WHATSAPP}}'],
-['cta','Link direto na bio para comprar agora.'],
-['cta','Manda um "SIM" que eu te envio os detalhes.'],
-['cta','Clica no link e garanta já: {{LINK}}'],
-['cta','Últimas vagas! Corra e garanta a sua.'],
-['cta','Comente "QUERO" que eu te mando o link.'],
-['cta','Corre no WhatsApp: {{WHATSAPP}}'],
-['cta','Responde aqui nos comentários que eu te explico.'],
-['cta','Me chama no direct agora mesmo!'],
-['cta','Salva esse post para não perder o contato.'],
-['cta','Compartilha com quem precisa ver isso.'],
-['cta','Marca um amigo que precisa saber disso.'],
-['cta','Me segue para mais dicas como essa.'],
-['cta','Envia um "OI" no WhatsApp que eu respondo.'],
-['cta','É só clicar no link: {{LINK}}'],
-['cta','Envia um e-mail para {{EMAIL}}'],
-['cta','Reserva o seu antes que acabe!'],
-['cta','Clique em "Comprar" no link abaixo.'],
-['cta','Me add no WhatsApp: {{WHATSAPP}}'],
-['cta','Entre em contato agora e garanta 10% OFF!'],
-['cta','Chama no PV que eu te envio o orçamento.'],
-['cta','Passa no link e finalize sua compra.'],
-['cta','Aproveita que tá com desconto!'],
-['cta','Corre que o estoque é limitado!'],
-['cta','Comenta aqui em baixo: QUERO!'],
-['cta','Chama agora: {{WHATSAPP}}'],
-['cta','Clique aqui e garanta o seu: {{LINK}}'],
-['cta','Não perde tempo — chama no WhatsApp.'],
-['cta','Passa no link para ver mais detalhes.'],
-['cta','Solicite agora o seu orçamento sem compromisso.'],
-['cta','Comenta "INFO" que eu te chamo no PV.'],
-['cta','Clica no "Comprar agora" e aproveita.'],
-['cta','Envie "EU QUERO" e garanta agora mesmo!'],
-['cta','Chama no WhatsApp e reserve o seu: {{WHATSAPP}}'],
-['cta','É só clicar no link e pronto: {{LINK}}'],
-['cta','Se interessou? Comenta "QUERO" aqui!'],
-['cta','Me chama no WhatsApp: {{WHATSAPP}}'],
-['cta','Passa no meu perfil para mais informações.'],
-['cta','Manda um "OI" que eu te explico tudo.'],
-['cta','Corre que as vagas são limitadas!'],
-['cta','Só clicar e finalizar: {{LINK}}'],
-['cta','Chama no PV que eu te mando o cardápio.'],
-['cta','Envie "QUERO" para garantir o seu!'],
-['cta','Comente abaixo qual você quer!'],
-['cta','Me chama no WhatsApp agora: {{WHATSAPP}}'],
-['cta','Clica no link da bio e aproveita!'],
-['cta','Comenta "EU QUERO" que eu te chamo!'],
-['cta','Reserva já pelo WhatsApp: {{WHATSAPP}}'],
-['cta','Envie um "SIM" aqui nos comentários!'],
-['cta','Corre pro link: {{LINK}}'],
-['cta','Manda um WhatsApp e garanta o seu.'],
-['cta','Clica em "Saiba Mais" e aproveite!'],
-['cta','Salva o post pra não esquecer.'],
-['cta','Marca aquele amigo que precisa disso!'],
-['cta','Me segue para não perder as novidades.'],
-['cta','Chama no direct e aproveite!'],
-['cta','Compartilha nos seus stories!'],
-['cta','Passa no link e aproveite a promoção: {{LINK}}'],
-['cta','Envie "QUERO INFO" e eu respondo!'],
-['cta','Me chama agora mesmo: {{WHATSAPP}}'],
-['cta','É só clicar e aproveitar!'],
-['cta','Última chance! Corre agora!'],
-['cta','Comenta aí se você quer saber mais!'],
-['cta','Manda um "oi" e garanta o seu desconto!'],
-['cta','Clica no link e não perde tempo!'],
-['cta','Corre no WhatsApp: {{WHATSAPP}}'],
-['cta','Aproveita agora ou se arrepende depois!'],
-['cta','Se inscreve para saber em primeira mão!'],
-['cta','Clica e aproveita — não vai durar!'],
-['cta','Chama logo que o preço vai subir!'],
-['cta','Me manda uma mensagem agora!'],
-['cta','Envie um "QUERO" que eu te chamo no PV!'],
-['cta','Só clicar no link e finalizar!'],
-['cta','Faz o PIX e garanta o seu!'],
-['cta','Corre, aproveita, e não perde!'],
-['cta','Passa aqui e reserva o seu: {{WHATSAPP}}'],
-['cta','Clica agora e garanta o seu!'],
-['cta','Manda mensagem que eu te envio tudo!'],
-['cta','Envia "QUERO" e eu te respondo já!'],
-['cta','Salva pra não perder o contato!'],
-['cta','Corre que tá acabando!'],
-['cta','Me chama: {{WHATSAPP}}'],
-['cta','Compartilha que ajuda!'],
-['cta','Marca aquele amigo que vai gostar!'],
-['cta','Clica e confere: {{LINK}}'],
-['cta','Responde esse story que eu te mando!'],
-['cta','Me segue para mais conteúdo!'],
-['cta','Envia "OI" no PV e vamos conversar!'],
-['cta','Chama no WhatsApp AGORA: {{WHATSAPP}}'],
-['cta','Clica no link e aproveite: {{LINK}}'],
-['cta','Comente "EU QUERO" se você quer!'],
-['cta','Corre e garanta o seu!'],
-['cta','Envia mensagem que eu te explico!'],
-['cta','Passa no link e finaliza!'],
-['cta','Últimas unidades! Corre pro link!'],
-['cta','Chama no PV — vaga limitada!'],
-['cta','Se você quer, envia um oi!'],
-['cta','Me chama que tá esperando você: {{WHATSAPP}}'],
-['cta','Clica e garante agora mesmo!'],
-
-/* === URGÊNCIA / ESCASSEZ (80) === */
-['urgencia','Só até hoje! Não deixa para amanhã.'],
-['urgencia','Últimas {{N}} unidades disponíveis!'],
-['urgencia','Promoção acaba em {{TEMPO}}!'],
-['urgencia','Corre! Restam apenas {{N}} vagas!'],
-['urgencia','Só nas próximas {{TEMPO}} horas!'],
-['urgencia','Última chance! Amanhã o preço volta ao normal.'],
-['urgencia','Vagas limitadas! Corre e garanta a sua.'],
-['urgencia','Depois desse prazo, o preço aumenta {{PERCENTUAL}}%.'],
-['urgencia','Só hoje: {{DESCONTO}}% OFF!'],
-['urgencia','Amanhã não tem mais!'],
-['urgencia','Corre que tá voando!'],
-['urgencia','Restam {{N}} vagas apenas.'],
-['urgencia','Promoção válida por tempo limitado.'],
-['urgencia','Últimos dias! Não perde!'],
-['urgencia','Estoque limitado! Garanta o seu.'],
-['urgencia','Apenas {{N}} clientes por vez.'],
-['urgencia','Corre, tá acabando!'],
-['urgencia','É agora ou nunca!'],
-['urgencia','Só até {{DATA}}!'],
-['urgencia','Última unidade em estoque!'],
-['urgencia','Encerra hoje à meia-noite!'],
-['urgencia','Corre que fecha em {{TEMPO}}!'],
-['urgencia','Restam poucos! Não deixa para depois.'],
-['urgencia','É só até o estoque acabar!'],
-['urgencia','Últimos {{N}} do lote!'],
-['urgencia','Aproveita que ainda dá tempo!'],
-['urgencia','Só pra quem agir rápido!'],
-['urgencia','Depois não adianta reclamar!'],
-['urgencia','Fecha em poucas horas!'],
-['urgencia','Corre antes que alguém leve o seu!'],
-['urgencia','Últimos dias para garantir!'],
-['urgencia','Amanhã aumenta o preço!'],
-['urgencia','Apenas {{N}} peças disponíveis!'],
-['urgencia','Só até 23h59!'],
-['urgencia','Promo relâmpago — válida por {{TEMPO}}!'],
-['urgencia','Vai sair do ar em breve!'],
-['urgencia','Corre que não volta!'],
-['urgencia','Última chamada para {{PRODUTO}}!'],
-['urgencia','Apenas nesses próximos minutos!'],
-['urgencia','Último dia!'],
-['urgencia','Faltam poucas horas!'],
-['urgencia','Enquanto durar o estoque!'],
-['urgencia','Não deixa para amanhã — não vai ter!'],
-['urgencia','Corre pro link AGORA!'],
-['urgencia','Amanhã não estará mais aqui!'],
-['urgencia','Últimas {{N}} horas!'],
-['urgencia','Encerra em {{TEMPO}}!'],
-['urgencia','Vai esgotar! Se garante!'],
-['urgencia','Só mais {{N}} para lotar!'],
-['urgencia','É hoje ou nunca mais nesse valor!'],
-['urgencia','Promo termina em algumas horas!'],
-['urgencia','Não deixa passar!'],
-['urgencia','Vai acabar rápido!'],
-['urgencia','Corre que tem fila!'],
-['urgencia','Últimos minutos!'],
-['urgencia','Só até acabar o estoque!'],
-['urgencia','Se você tá pensando, alguém já tá comprando.'],
-['urgencia','Restam {{N}}!' ],
-['urgencia','Não tem reposição!'],
-['urgencia','Amanhã vai aumentar!'],
-['urgencia','Última oportunidade!'],
-['urgencia','Corre antes que esgote!'],
-['urgencia','Estoque acabando em tempo real!'],
-['urgencia','É agora!'],
-['urgencia','Últimas horas nesse preço!'],
-['urgencia','Só até meia-noite!'],
-['urgencia','Depois não tem!'],
-['urgencia','Promo por {{TEMPO}} apenas!'],
-['urgencia','Corre que tá vendendo rápido!'],
-['urgencia','Faltam {{N}} vagas!'],
-['urgencia','Última chance hoje!'],
-['urgencia','Vai subir amanhã!'],
-['urgencia','Não deixa para a próxima!'],
-['urgencia','Corre e aproveita!'],
-['urgencia','Últimas peças!'],
-['urgencia','Só hoje com {{DESCONTO}}%!'],
-['urgencia','Restam poucas horas!'],
-['urgencia','Amanhã não tem mais!'],
-['urgencia','É agora ou mais caro depois.'],
-['urgencia','Não perde! É só hoje!'],
-
-/* === PROVA SOCIAL (70) === */
-['social','Mais de {{N}} clientes satisfeitos!'],
-['social','Avaliação média de {{NOTA}}/5 estrelas!'],
-['social','Mais de {{N}} vendas no último mês!'],
-['social','Recomendado por {{N}} clientes!'],
-['social','Você não é o primeiro — já ajudamos {{N}} pessoas.'],
-['social','Mais de {{N}} seguidores confiam em nós!'],
-['social','Ele(a) duvidou e depois se arrependeu de não ter comprado antes!'],
-['social','Foi o produto mais vendido do mês!'],
-['social','Quem comprou, amou — veja os depoimentos!'],
-['social','{{N}} pessoas compraram nas últimas 24 horas!'],
-['social','5 estrelas de {{N}} avaliações!'],
-['social','Cliente desde {{ANO}} e sempre satisfeito!'],
-['social','Já é sucesso de vendas!'],
-['social','Produto mais elogiado do nosso catálogo!'],
-['social','Olha o que dizem por aí!'],
-['social','São {{N}} pessoas usando e recomendando!'],
-['social','Único negócio com nota {{NOTA}} na região!'],
-['social','Reputação impecável em {{N}} avaliações!'],
-['social','Marcado como "Melhor do Ano" por {{N}} clientes!'],
-['social','Prova social: {{N}} clientes ativos!'],
-['social','Já foram mais de {{N}} pedidos entregues!'],
-['social','Selo de excelência pelo 3º ano seguido!'],
-['social','Os clientes voltam — {{N}}% compram novamente!'],
-['social','Nosso produto é o preferido de {{PROFISSAO}}!'],
-['social','Testado e aprovado por {{N}} profissionais!'],
-['social','Certificação {{CERTIFICACAO}} conquistada!'],
-['social','{{N}} clientes renovaram no último mês!'],
-['social','Top 1 em vendas na categoria {{CATEGORIA}}!'],
-['social','Comentários reais de quem já comprou:'],
-['social','Uma comunidade de {{N}} pessoas que confiam!'],
-['social','O mais recomendado por especialistas!'],
-['social','Assim como {{NOMES_FAMOSOS}} já usam!'],
-['social','Referência em {{AREA}} há {{ANOS}} anos!'],
-['social','{%STATUS%} de clientes recomendam!'],
-['social','Único no mercado com nota {{NOTA}}!'],
-['social','Marcas parceiras: {{PARCERIAS}}'],
-['social','Prêmio {{PREMIO}} conquistado em {{ANO}}!'],
-['social','Mais de {{N}} avaliações — média {{NOTA}}!'],
-['social','Usado por {{N}} empresas no Brasil!'],
-['social','O queridinho dos clientes!'],
-['social','Sempre entre os mais vendidos!'],
-['social','Clientes reais, resultados reais!'],
-['social','Crescimento de {{PERCENTUAL}}% em vendas!'],
-['social','Aprovado em teste cego por {{N}} pessoas!'],
-['social','{{N}}% de recompra — os clientes voltam!'],
-['social','Indicado por {{N}}% dos clientes!'],
-['social','Foi o mais requisitado do mês!'],
-['social','Cliente satisfeito desde {{ANO}}!'],
-['social','Selo de qualidade {{CERTIFICACAO}}!'],
-['social','Pioneiro em {{AREA}}!'],
-['social','Já é referência no mercado!'],
-['social','Notícia em {{VEICULO}}!'],
-['social','Aprovado por {{N}} influencers!'],
-['social','{{N}} avaliações com 5 estrelas!'],
-['social','Marcado como essencial por {{N}} clientes!'],
-['social','Líder de vendas há {{MESES}} meses!'],
-['social','O top 1 na preferência dos clientes!'],
-['social','Eleito melhor por {{N}} pessoas!'],
-['social','Testado por {{N}}, aprovado por 100%!'],
-['social','Cliente feliz há {{ANOS}} anos!'],
-['social','Melhor custo-benefício segundo {{N}} clientes!'],
-['social','Mais de {{N}} pessoas nos indicaram!'],
-['social','Nota fiscal + garantia = confiança!'],
-['social','Somos a {{N}}ª loja mais bem avaliada!'],
-['social','{{N}} pessoas comprando agora!'],
-['social','Estamos há {{ANOS}} anos no mercado!'],
-['social','Já atendemos {{N}} clientes!'],
-['social','Reconhecido por {{VEICULO_2}}!'],
-['social','Índice de satisfação: {{PERCENTUAL}}%!'],
-['social','Marca preferida em {{CIDADE}}!'],
-['social','Sempre o mais pedido da semana!'],
-
-/* === BENEFÍCIOS (60) === */
-['beneficio','Economize tempo com {{BENEFICIO_PRINCIPAL}}.'],
-['beneficio','Resultados em até {{TEMPO}}.'],
-['beneficio','Aprenda no seu ritmo, quando quiser.'],
-['beneficio','100% online — assista de onde estiver.'],
-['beneficio','Acesso vitalício ao conteúdo.'],
-['beneficio','Aulas gravadas em HD.'],
-['beneficio','Certificado de conclusão incluso.'],
-['beneficio','Suporte individual pelo WhatsApp.'],
-['beneficio','Material didático completo.'],
-['beneficio','Bônus exclusivos para alunos.'],
-['beneficio','Atualizações grátis para sempre.'],
-['beneficio','Acesso imediato após o pagamento.'],
-['beneficio','Fácil de aplicar, mesmo começando do zero.'],
-['beneficio','Resultados comprovados na prática.'],
-['beneficio','Sem enrolação — direto ao ponto.'],
-['beneficio','Adaptável para todos os níveis.'],
-['beneficio','Economize milhares de reais com dicas.'],
-['beneficio','Ferramentas prontas para usar.'],
-['beneficio','Passo a passo detalhado.'],
-['beneficio','Você aplica em 24 horas.'],
-['beneficio','Aumente sua produtividade em {{PERCENTUAL}}%.'],
-['beneficio','Reduza custos sem perder qualidade.'],
-['beneficio','Atendimento humanizado e ágil.'],
-['beneficio','Entrega em {{PRAZO}} em todo o Brasil.'],
-['beneficio','Garantia de {{TEMPO}} dias.'],
-['beneficio','Parcelamento em até {{N}}x sem juros.'],
-['beneficio','Frete grátis acima de R$ {{VALOR}}.'],
-['beneficio','Desconto exclusivo para membros do grupo.'],
-['beneficio','Material vitalício + futuras atualizações.'],
-['beneficio','Suporte vitalício incluso.'],
-['beneficio','Sem mensalidade, sem pegadinhas.'],
-['beneficio','Cancelamento a qualquer momento.'],
-['beneficio','Não precisa ter experiência prévia.'],
-['beneficio','Você aprende mesmo sendo iniciante.'],
-['beneficio','Método validado por {{N}} pessoas.'],
-['beneficio','Economia de até R$ {{VALOR}}.'],
-['beneficio','Seu dinheiro de volta se não gostar.'],
-['beneficio','Atendimento das {{HORARIO_1}} às {{HORARIO_2}}.'],
-['beneficio','Sistema testado e aprovado.'],
-['beneficio','Mais praticidade no seu dia a dia.'],
-['beneficio','Solução completa em um só lugar.'],
-['beneficio','Resultado em curto, médio e longo prazo.'],
-['beneficio','Você começa a ver diferença em {{TEMPO}}.'],
-['beneficio','Fácil de usar — sem complicação.'],
-['beneficio','Você economiza tempo e dinheiro.'],
-['beneficio','Automatize tarefas repetitivas.'],
-['beneficio','Ganhe mais tempo com o que importa.'],
-['beneficio','Do básico ao avançado em {{TEMPO}}.'],
-['beneficio','Metodologia passo a passo.'],
-['beneficio','Ferramentas complementares inclusas.'],
-['beneficio','Comunidade exclusiva de alunos.'],
-['beneficio','Networking qualificado garantido.'],
-['beneficio','Consultoria inicial gratuita.'],
-['beneficio','Análise personalizada do seu caso.'],
-['beneficio','Plano de ação sob medida.'],
-['beneficio','Acompanhamento profissional contínuo.'],
-['beneficio','Cobre tudo que você precisa saber.'],
-['beneficio','Direto ao ponto, sem enrolação.'],
-['beneficio','Atualizado para {{ANO}}.'],
-['beneficio','Baixo investimento, alto retorno.'],
-['beneficio','Solução imediata para seu problema.'],
-
-/* === OBJEÇÕES (50) === */
-['objecao','Você deve estar pensando: "isso é muito caro". Mas quanto custa continuar como está?'],
-['objecao','"Não tenho tempo" — este é justamente para quem tem pouco tempo.'],
-['objecao','"Não sei se funciona para mim" — foi feito para você.'],
-['objecao','"Já tentei de tudo" — você ainda não tentou isso.'],
-['objecao','"Está fora do meu orçamento" — cabe em {{PARCELAMENTO}}.'],
-['objecao','"Não sou de tecnologia" — não precisa ser. É simples.'],
-['objecao','"Vai dar certo mesmo?" — mais de {{N}} pessoas já provaram.'],
-['objecao','"Depois eu vejo" — depois pode ser mais caro.'],
-['objecao','"Meu caso é diferente" — atende todos os perfis.'],
-['objecao','"Já vi coisa parecida" — mas nunca com esse resultado.'],
-['objecao','"Prefiro esperar" — o preço só sobe.'],
-['objecao','"Parece bom demais" — e é real, com garantia.'],
-['objecao','"Vou pensar melhor" — quanto vale ter isso resolvido?'],
-['objecao','"Não acredito nessas coisas" — não acredite: teste.'],
-['objecao','"Não conheço o produto" — tem depoimentos reais.'],
-['objecao','"É seguro?" — pagamento 100% seguro.'],
-['objecao','"E se eu não gostar?" — 7 dias para devolução.'],
-['objecao','"Não sei se consigo acompanhar" — você tem suporte.'],
-['objecao','"Já gastei muito antes" — esse investimento é único.'],
-['objecao','"Vai funcionar pro meu nicho?" — funciona em qualquer.'],
-['objecao','"Preciso pensar" — você quer, só tem medo.'],
-['objecao','"Talvez seja golpe" — empresa registrada e com reputação.'],
-['objecao','"Não tenho como pagar agora" — parcelamos em até {{N}}x.'],
-['objecao','"Meu caso é complexo" — para isso existem especialistas.'],
-['objecao','"Prefiro fazer sozinho" — você já tentou e não deu certo.'],
-['objecao','"Vou esperar a próxima" — pode não ter próxima.'],
-['objecao','"Não confio em compra online" — nota fiscal + garantia.'],
-['objecao','"Tenho medo de não dar certo" — e o medo de não tentar?'],
-['objecao','"Achei caro" — mais caro é ficar parado.'],
-['objecao','"Vou esperar baixar" — o preço vai subir.'],
-['objecao','"Deve ser complicado" — é mais fácil do que imagina.'],
-['objecao','"Não sei se é pra mim" — é pra quem quer resultado.'],
-['objecao','"Não tenho tempo para isso" — sem isso você perde tempo.'],
-['objecao','"Meu negócio é diferente" — resultados para todos os tipos.'],
-['objecao','"Prefiro testar antes" — o primeiro contato é grátis.'],
-['objecao','"Isso é muito avançado" — é passo a passo.'],
-['objecao','"Vou ver com calma" — tempo é dinheiro.'],
-['objecao','"Não me sinto pronto" — você aprende no caminho.'],
-['objecao','"E se não funcionar?" — devolvemos seu dinheiro.'],
-['objecao','"Prefiro o mais barato" — o barato sai caro.'],
-['objecao','"Acho que não é pra agora" — é exatamente pra agora.'],
-['objecao','"Não uso redes sociais" — não precisa usar.'],
-['objecao','"Não sei se cabe no meu bolso" — cabe sim, veja o parcelamento.'],
-['objecao','"Tenho medo de perder dinheiro" — aqui você tem garantia.'],
-['objecao','"É muito texto para ler" — mas pode te mudar.'],
-['objecao','"Não entendi tudo" — chama no WhatsApp que explico.'],
-['objecao','"Prefiro comprar depois" — depois pode não ter.'],
-['objecao','"Vou esperar meus sócios decidirem" — o tempo corre.'],
-['objecao','"Não estou pronto financeiramente" — existem opções.'],
-['objecao','"Talvez não seja o momento" — nunca é o momento perfeito.'],
-['objecao','"Será que vale mesmo?" — vale cada centavo.'],
-
-/* === FECHAMENTO (40) === */
-['fechamento','Você tem duas opções: continuar como está ou dar o primeiro passo. Qual escolhe?'],
-['fechamento','O que você faria se soubesse que não pode falhar?'],
-['fechamento','Bora começar hoje?'],
-['fechamento','Se você quer mudar, é agora.'],
-['fechamento','A decisão que muda tudo está nas suas mãos.'],
-['fechamento','Em 30 dias você pode estar em outro patamar.'],
-['fechamento','Sua melhor versão começa hoje.'],
-['fechamento','Não adie mais seu sonho.'],
-['fechamento','A hora é agora.'],
-['fechamento','Vem fazer parte desse time.'],
-['fechamento','Você merece isso. Eu sei que sim.'],
-['fechamento','Junte-se a {{N}} pessoas que já decidiram.'],
-['fechamento','Está na hora de você dar esse passo.'],
-['fechamento','O próximo capítulo da sua história começa aqui.'],
-['fechamento','Vou te esperar do outro lado.'],
-['fechamento','Você não vai se arrepender.'],
-['fechamento','Uma decisão separa você do próximo nível.'],
-['fechamento','Não é sobre o custo, é sobre o valor.'],
-['fechamento','Todo mundo que tentou, não se arrependeu.'],
-['fechamento','Venha fazer parte dessa transformação.'],
-['fechamento','Se eu consegui, você também consegue.'],
-['fechamento','Deixa eu te ajudar a dar o próximo passo.'],
-['fechamento','Comece hoje. Agradeça amanhã.'],
-['fechamento','Você está a um clique da mudança.'],
-['fechamento','Não deixa o medo te parar.'],
-['fechamento','Bora fazer diferente?'],
-['fechamento','Você vai olhar pra trás e dizer: valeu a pena.'],
-['fechamento','Eu acredito em você. Confie também.'],
-['fechamento','Se você chegou até aqui, é sinal.'],
-['fechamento','É o seu momento.'],
-['fechamento','Você vai fazer isso por você?'],
-['fechamento','Toma a decisão hoje.'],
-['fechamento','Vem comigo nessa!'],
-['fechamento','Do zero ao topo em {{TEMPO}}.'],
-['fechamento','O primeiro passo é o mais importante.'],
-['fechamento','Não espere mais.'],
-['fechamento','Vai, você merece!'],
-['fechamento','Juntos vamos mais longe.'],
-['fechamento','Se inscreva agora e veja a diferença.'],
-['fechamento','Confia: você não vai se arrepender.'],
-['fechamento','Bora? Eu tô te esperando.']
+['hook','Você está deixando dinheiro na mesa sem perceber.'],['hook','Ninguém te contou isso sobre {{TEMA}}…'],['hook','A verdade que ninguém tem coragem de falar.'],['hook','Por que 90% das pessoas falham em {{TEMA}}?'],['hook','Eu não acreditava até ver com meus próprios olhos.'],['hook','Pare tudo o que está fazendo e leia isso.'],['hook','Isso mudou completamente a minha vida.'],['hook','Descobri o segredo depois de muito tempo.'],['hook','Se você faz isso, está perdendo clientes.'],['hook','O erro que quase me custou tudo.'],['hook','Como eu faturei R$ 10.000 em 30 dias.'],['hook','A estratégia que ninguém quer compartilhar.'],['hook','Isso é polêmico, mas precisa ser dito.'],['hook','Testei durante 30 dias — o resultado me chocou.'],['hook','Você só precisa de 5 minutos para entender.'],['hook','Se você tem mais de 30 anos, precisa ler isso.'],['hook','O que eu descobri depois de gastar R$ 5.000.'],['hook','Uma pergunta rápida: você está satisfeito com {{AREA}}?'],['hook','Todos dizem que é impossível — eu provei o contrário.'],['hook','Descobri por acidente e mudou tudo.'],['hook','Nunca mais farei isso do jeito antigo.'],['hook','Isso vai contra tudo que te ensinaram.'],['hook','Qual o preço de continuar do jeito que está?'],['hook','Eu estava errado o tempo todo.'],['hook','3 coisas que eu gostaria de ter sabido antes.'],['hook','O momento em que tudo clicou.'],['hook','Se eu pudesse voltar no tempo, faria isso.'],['hook','A diferença entre quem consegue e quem não.'],['hook','Vou ser sincero com você agora.'],['hook','Eu não vendo {{PRODUTO}} pelo dinheiro.'],['hook','Isso vale mais do que qualquer curso.'],['hook','Me responde uma coisa honestamente.'],['hook','O que eu aprendi em 10 anos em 10 minutos.'],['hook','Preciso te contar uma coisa urgente.'],['hook','Você já se sentiu travado com {{PROBLEMA}}?'],['hook','Se eu conseguir, você também consegue.'],['hook','Quando eu parar de fazer isso, cresci 300%.'],['hook','Aquele conselho que mudou minha trajetória.'],['hook','Não é o que você pensa.'],['hook','Ninguém acreditou em mim — olha onde cheguei.'],['hook','Descobri isso por R$ 2.000 — te conto de graça.'],['hook','Esse detalhe faz toda a diferença.'],['hook','Como resolver {{PROBLEMA}} em 7 dias.'],['hook','A pergunta que ninguém faz e deveria.'],['hook','Se você tem 5 minutos, vale a pena ler.'],['hook','Isso vai parecer estranho no começo.'],['hook','Eu travei nesse ponto por 2 anos.'],['hook','O que ninguém fala sobre {{TEMA}}.'],['hook','Fiz o teste e vou te contar o resultado.'],['hook','Existe um jeito mais fácil. E eu descobri.'],['hook','Parei de perder tempo quando entendi isso.'],['hook','Se você quer {{OBJETIVO}}, leia até o fim.'],['hook','Alerta: isso pode incomodar algumas pessoas.'],['hook','Vou te mostrar o atalho que ninguém mostra.'],['hook','Isso me economizou meses de trabalho.'],['hook','Sabe aquele problema? Tem solução.'],['hook','A estratégia proibida que funciona.'],['hook','Não é magia — é método.'],['hook','Testado e comprovado por {{N}} pessoas.'],['hook','Eu fiz o que todos diziam ser impossível.'],['hook','A virada que você estava esperando.'],['hook','Olha o que descobri mexendo no {{PRODUTO}}.'],['hook','Isso não é teoria. É prática.'],['hook','Pesquisei durante meses — agora vou te contar.'],['hook','A diferença que mudou tudo em 1 dia.'],['hook','Se você comete esse erro, pare agora.'],['hook','Foi isso que me tirou do vermelho.'],['hook','Duas palavras que mudaram meu negócio: {{PALAVRA}}.'],['hook','Como sair do {{SITUACAO_ATUAL}} para {{OBJETIVO}}.'],['hook','Um erro de R$ 100 virou aprendizado de R$ 10.000.'],['hook','Se você ainda não faz isso, comece hoje.'],['hook','Nunca pensei que funcionaria. Funcionou.'],['hook','Tem uma coisa que você não está vendo.'],['hook','Essa verdade dói, mas liberta.'],['hook','Eu quase desisti. Ainda bem que não.'],['hook','A ferramenta que faltava na sua vida.'],['hook','O que aprendi em 1 ano — em 1 minuto.'],['hook','Você merece saber disso.'],['hook','Sabe qual é o verdadeiro problema?'],['hook','Sem isso, você continua dando murro em ponta de faca.'],['hook','Você já percebeu esse padrão?'],['hook','Isso resolve 90% dos seus problemas com {{TEMA}}.'],['hook','A diferença é gritante, olha só.'],['hook','Você está a um clique da mudança.'],['hook','Nunca vi nada igual antes.'],['hook','Se você ainda não conhece, precisa conhecer.'],['hook','Foi testado. Foi aprovado. É real.'],['hook','O segredo está em um detalhe que todos ignoram.'],['hook','Vou abrir o jogo pra você.'],['hook','Se estivesse na minha frente, eu diria isso.'],['hook','A história que vai te fazer repensar tudo.'],['hook','É agora ou nunca.'],['hook','Descobri no pior momento — e serviu.'],['hook','Não é sobre sorte. É sobre método.'],['hook','Foi assim que saí de {{SITUACAO_1}} para {{SITUACAO_2}}.'],['hook','Um pequeno ajuste, um grande resultado.'],['hook','Se você me der 5 minutos, eu te mostro.'],['hook','O caminho é mais curto do que parece.'],['hook','Tem jeito. E é mais simples do que imagina.'],['hook','Aquele "isso não funciona" que virou "isso é incrível".'],['hook','Você está mais perto do que pensa.'],['hook','Basta dar o primeiro passo. Eu te mostro o resto.'],['hook','Essa é a oportunidade que você pediu.'],
+['cta','Comenta "EU QUERO" e eu te chamo no PV!'],['cta','Chama no WhatsApp e garanta o seu: {{WHATSAPP}}'],['cta','Link direto na bio para comprar agora.'],['cta','Manda um "SIM" que eu te envio os detalhes.'],['cta','Clica no link e garanta já: {{LINK}}'],['cta','Últimas vagas! Corra e garanta a sua.'],['cta','Comente "QUERO" que eu te mando o link.'],['cta','Corre no WhatsApp: {{WHATSAPP}}'],['cta','Responde aqui nos comentários que eu te explico.'],['cta','Me chama no direct agora mesmo!'],['cta','Salva esse post para não perder o contato.'],['cta','Compartilha com quem precisa ver isso.'],['cta','Marca um amigo que precisa saber disso.'],['cta','Me segue para mais dicas como essa.'],['cta','Envia um "OI" no WhatsApp que eu respondo.'],['cta','É só clicar no link: {{LINK}}'],['cta','Envia um e-mail para {{EMAIL}}'],['cta','Reserva o seu antes que acabe!'],['cta','Clique em "Comprar" no link abaixo.'],['cta','Me add no WhatsApp: {{WHATSAPP}}'],['cta','Entre em contato agora e garanta 10% OFF!'],['cta','Chama no PV que eu te envio o orçamento.'],['cta','Passa no link e finalize sua compra.'],['cta','Aproveita que tá com desconto!'],['cta','Corre que o estoque é limitado!'],['cta','Comenta aqui em baixo: QUERO!'],['cta','Chama agora: {{WHATSAPP}}'],['cta','Clique aqui e garanta o seu: {{LINK}}'],['cta','Não perde tempo — chama no WhatsApp.'],['cta','Passa no link para ver mais detalhes.'],['cta','Solicite agora o seu orçamento sem compromisso.'],['cta','Comenta "INFO" que eu te chamo no PV.'],['cta','Clica no "Comprar agora" e aproveita.'],['cta','Envie "EU QUERO" e garanta agora mesmo!'],['cta','Chama no WhatsApp e reserve o seu: {{WHATSAPP}}'],['cta','É só clicar no link e pronto: {{LINK}}'],['cta','Se interessou? Comenta "QUERO" aqui!'],['cta','Me chama no WhatsApp: {{WHATSAPP}}'],['cta','Passa no meu perfil para mais informações.'],['cta','Manda um "OI" que eu te explico tudo.'],['cta','Corre que as vagas são limitadas!'],['cta','Só clicar e finalizar: {{LINK}}'],['cta','Chama no PV que eu te mando o cardápio.'],['cta','Envie "QUERO" para garantir o seu!'],['cta','Comente abaixo qual você quer!'],['cta','Me chama no WhatsApp agora: {{WHATSAPP}}'],['cta','Clica no link da bio e aproveita!'],['cta','Comenta "EU QUERO" que eu te chamo!'],['cta','Reserva já pelo WhatsApp: {{WHATSAPP}}'],['cta','Envie um "SIM" aqui nos comentários!'],['cta','Corre pro link: {{LINK}}'],['cta','Manda um WhatsApp e garanta o seu.'],['cta','Clica em "Saiba Mais" e aproveite!'],['cta','Salva o post pra não esquecer.'],['cta','Marca aquele amigo que precisa disso!'],['cta','Me segue para não perder as novidades.'],['cta','Chama no direct e aproveite!'],['cta','Compartilha nos seus stories!'],['cta','Passa no link e aproveite a promoção: {{LINK}}'],['cta','Envie "QUERO INFO" e eu respondo!'],['cta','Me chama agora mesmo: {{WHATSAPP}}'],['cta','É só clicar e aproveitar!'],['cta','Última chance! Corre agora!'],['cta','Comenta aí se você quer saber mais!'],['cta','Manda um "oi" e garanta o seu desconto!'],['cta','Clica no link e não perde tempo!'],['cta','Corre no WhatsApp: {{WHATSAPP}}'],['cta','Aproveita agora ou se arrepende depois!'],['cta','Se inscreve para saber em primeira mão!'],['cta','Clica e aproveita — não vai durar!'],['cta','Chama logo que o preço vai subir!'],['cta','Me manda uma mensagem agora!'],['cta','Envie um "QUERO" que eu te chamo no PV!'],['cta','Só clicar no link e finalizar!'],['cta','Faz o PIX e garanta o seu!'],['cta','Corre, aproveita, e não perde!'],['cta','Passa aqui e reserva o seu: {{WHATSAPP}}'],['cta','Clica agora e garanta o seu!'],['cta','Manda mensagem que eu te envio tudo!'],['cta','Envia "QUERO" e eu te respondo já!'],['cta','Salva pra não perder o contato!'],['cta','Corre que tá acabando!'],['cta','Me chama: {{WHATSAPP}}'],['cta','Compartilha que ajuda!'],['cta','Marca aquele amigo que vai gostar!'],['cta','Clica e confere: {{LINK}}'],['cta','Responde esse story que eu te mando!'],['cta','Me segue para mais conteúdo!'],['cta','Envia "OI" no PV e vamos conversar!'],['cta','Chama no WhatsApp AGORA: {{WHATSAPP}}'],['cta','Clica no link e aproveite: {{LINK}}'],['cta','Comente "EU QUERO" se você quer!'],['cta','Corre e garanta o seu!'],['cta','Envia mensagem que eu te explico!'],['cta','Passa no link e finaliza!'],['cta','Últimas unidades! Corre pro link!'],['cta','Chama no PV — vaga limitada!'],['cta','Se você quer, envia um oi!'],['cta','Me chama que tá esperando você: {{WHATSAPP}}'],['cta','Clica e garante agora mesmo!'],
+['urgencia','Só até hoje! Não deixa para amanhã.'],['urgencia','Últimas {{N}} unidades disponíveis!'],['urgencia','Promoção acaba em {{TEMPO}}!'],['urgencia','Corre! Restam apenas {{N}} vagas!'],['urgencia','Só nas próximas {{TEMPO}} horas!'],['urgencia','Última chance! Amanhã o preço volta ao normal.'],['urgencia','Vagas limitadas! Corre e garanta a sua.'],['urgencia','Depois desse prazo, o preço aumenta {{PERCENTUAL}}%.'],['urgencia','Só hoje: {{DESCONTO}}% OFF!'],['urgencia','Amanhã não tem mais!'],['urgencia','Corre que tá voando!'],['urgencia','Restam {{N}} vagas apenas.'],['urgencia','Promoção válida por tempo limitado.'],['urgencia','Últimos dias! Não perde!'],['urgencia','Estoque limitado! Garanta o seu.'],['urgencia','Apenas {{N}} clientes por vez.'],['urgencia','Corre, tá acabando!'],['urgencia','É agora ou nunca!'],['urgencia','Só até {{DATA}}!'],['urgencia','Última unidade em estoque!'],['urgencia','Encerra hoje à meia-noite!'],['urgencia','Corre que fecha em {{TEMPO}}!'],['urgencia','Restam poucos! Não deixa para depois.'],['urgencia','É só até o estoque acabar!'],['urgencia','Últimos {{N}} do lote!'],['urgencia','Aproveita que ainda dá tempo!'],['urgencia','Só pra quem agir rápido!'],['urgencia','Depois não adianta reclamar!'],['urgencia','Fecha em poucas horas!'],['urgencia','Corre antes que alguém leve o seu!'],['urgencia','Últimos dias para garantir!'],['urgencia','Amanhã aumenta o preço!'],['urgencia','Apenas {{N}} peças disponíveis!'],['urgencia','Só até 23h59!'],['urgencia','Promo relâmpago — válida por {{TEMPO}}!'],['urgencia','Vai sair do ar em breve!'],['urgencia','Corre que não volta!'],['urgencia','Última chamada para {{PRODUTO}}!'],['urgencia','Apenas nesses próximos minutos!'],['urgencia','Último dia!'],['urgencia','Faltam poucas horas!'],['urgencia','Enquanto durar o estoque!'],['urgencia','Não deixa para amanhã — não vai ter!'],['urgencia','Corre pro link AGORA!'],['urgencia','Amanhã não estará mais aqui!'],['urgencia','Últimas {{N}} horas!'],['urgencia','Encerra em {{TEMPO}}!'],['urgencia','Vai esgotar! Se garante!'],['urgencia','Só mais {{N}} para lotar!'],['urgencia','É hoje ou nunca mais nesse valor!'],['urgencia','Promo termina em algumas horas!'],['urgencia','Não deixa passar!'],['urgencia','Vai acabar rápido!'],['urgencia','Corre que tem fila!'],['urgencia','Últimos minutos!'],['urgencia','Só até acabar o estoque!'],['urgencia','Se você tá pensando, alguém já tá comprando.'],['urgencia','Restam {{N}}!'],['urgencia','Não tem reposição!'],['urgencia','Amanhã vai aumentar!'],['urgencia','Última oportunidade!'],['urgencia','Corre antes que esgote!'],['urgencia','Estoque acabando em tempo real!'],['urgencia','É agora!'],['urgencia','Últimas horas nesse preço!'],['urgencia','Só até meia-noite!'],['urgencia','Depois não tem!'],['urgencia','Promo por {{TEMPO}} apenas!'],['urgencia','Corre que tá vendendo rápido!'],['urgencia','Faltam {{N}} vagas!'],['urgencia','Última chance hoje!'],['urgencia','Vai subir amanhã!'],['urgencia','Não deixa para a próxima!'],['urgencia','Corre e aproveita!'],['urgencia','Últimas peças!'],['urgencia','Só hoje com {{DESCONTO}}%!'],['urgencia','Restam poucas horas!'],['urgencia','Amanhã não tem mais!'],['urgencia','É agora ou mais caro depois.'],['urgencia','Não perde! É só hoje!'],
+['social','Mais de {{N}} clientes satisfeitos!'],['social','Avaliação média de {{NOTA}}/5 estrelas!'],['social','Mais de {{N}} vendas no último mês!'],['social','Recomendado por {{N}} clientes!'],['social','Você não é o primeiro — já ajudamos {{N}} pessoas.'],['social','Mais de {{N}} seguidores confiam em nós!'],['social','Ele(a) duvidou e depois se arrependeu de não ter comprado antes!'],['social','Foi o produto mais vendido do mês!'],['social','Quem comprou, amou — veja os depoimentos!'],['social','{{N}} pessoas compraram nas últimas 24 horas!'],['social','5 estrelas de {{N}} avaliações!'],['social','Cliente desde {{ANO}} e sempre satisfeito!'],['social','Já é sucesso de vendas!'],['social','Produto mais elogiado do nosso catálogo!'],['social','Olha o que dizem por aí!'],['social','São {{N}} pessoas usando e recomendando!'],['social','Único negócio com nota {{NOTA}} na região!'],['social','Reputação impecável em {{N}} avaliações!'],['social','Marcado como "Melhor do Ano" por {{N}} clientes!'],['social','Prova social: {{N}} clientes ativos!'],['social','Já foram mais de {{N}} pedidos entregues!'],['social','Selo de excelência pelo 3º ano seguido!'],['social','Os clientes voltam — {{N}}% compram novamente!'],['social','Nosso produto é o preferido de {{PROFISSAO}}!'],['social','Testado e aprovado por {{N}} profissionais!'],['social','Certificação {{CERTIFICACAO}} conquistada!'],['social','{{N}} clientes renovaram no último mês!'],['social','Top 1 em vendas na categoria {{CATEGORIA}}!'],['social','Comentários reais de quem já comprou:'],['social','Uma comunidade de {{N}} pessoas que confiam!'],['social','O mais recomendado por especialistas!'],['social','Assim como {{NOMES_FAMOSOS}} já usam!'],['social','Referência em {{AREA}} há {{ANOS}} anos!'],['social','{{PERCENTUAL}}% de clientes recomendam!'],['social','Único no mercado com nota {{NOTA}}!'],['social','Marcas parceiras: {{PARCERIAS}}'],['social','Prêmio {{PREMIO}} conquistado em {{ANO}}!'],['social','Mais de {{N}} avaliações — média {{NOTA}}!'],['social','Usado por {{N}} empresas no Brasil!'],['social','O queridinho dos clientes!'],['social','Sempre entre os mais vendidos!'],['social','Clientes reais, resultados reais!'],['social','Crescimento de {{PERCENTUAL}}% em vendas!'],['social','Aprovado em teste cego por {{N}} pessoas!'],['social','{{N}}% de recompra — os clientes voltam!'],['social','Indicado por {{N}}% dos clientes!'],['social','Foi o mais requisitado do mês!'],['social','Cliente satisfeito desde {{ANO}}!'],['social','Selo de qualidade {{CERTIFICACAO}}!'],['social','Pioneiro em {{AREA}}!'],['social','Já é referência no mercado!'],['social','Notícia em {{VEICULO}}!'],['social','Aprovado por {{N}} influencers!'],['social','{{N}} avaliações com 5 estrelas!'],['social','Marcado como essencial por {{N}} clientes!'],['social','Líder de vendas há {{MESES}} meses!'],['social','O top 1 na preferência dos clientes!'],['social','Eleito melhor por {{N}} pessoas!'],['social','Testado por {{N}}, aprovado por 100%!'],['social','Cliente feliz há {{ANOS}} anos!'],['social','Melhor custo-benefício segundo {{N}} clientes!'],['social','Mais de {{N}} pessoas nos indicaram!'],['social','Nota fiscal + garantia = confiança!'],['social','Somos a {{N}}ª loja mais bem avaliada!'],['social','{{N}} pessoas comprando agora!'],['social','Estamos há {{ANOS}} anos no mercado!'],['social','Já atendemos {{N}} clientes!'],['social','Reconhecido por {{VEICULO_2}}!'],['social','Índice de satisfação: {{PERCENTUAL}}%!'],['social','Marca preferida em {{CIDADE}}!'],['social','Sempre o mais pedido da semana!'],
+['beneficio','Economize tempo com {{BENEFICIO_PRINCIPAL}}.'],['beneficio','Resultados em até {{TEMPO}}.'],['beneficio','Aprenda no seu ritmo, quando quiser.'],['beneficio','100% online — assista de onde estiver.'],['beneficio','Acesso vitalício ao conteúdo.'],['beneficio','Aulas gravadas em HD.'],['beneficio','Certificado de conclusão incluso.'],['beneficio','Suporte individual pelo WhatsApp.'],['beneficio','Material didático completo.'],['beneficio','Bônus exclusivos para alunos.'],['beneficio','Atualizações grátis para sempre.'],['beneficio','Acesso imediato após o pagamento.'],['beneficio','Fácil de aplicar, mesmo começando do zero.'],['beneficio','Resultados comprovados na prática.'],['beneficio','Sem enrolação — direto ao ponto.'],['beneficio','Adaptável para todos os níveis.'],['beneficio','Economize milhares de reais com dicas.'],['beneficio','Ferramentas prontas para usar.'],['beneficio','Passo a passo detalhado.'],['beneficio','Você aplica em 24 horas.'],['beneficio','Aumente sua produtividade em {{PERCENTUAL}}%.'],['beneficio','Reduza custos sem perder qualidade.'],['beneficio','Atendimento humanizado e ágil.'],['beneficio','Entrega em {{PRAZO}} em todo o Brasil.'],['beneficio','Garantia de {{TEMPO}} dias.'],['beneficio','Parcelamento em até {{N}}x sem juros.'],['beneficio','Frete grátis acima de R$ {{VALOR}}.'],['beneficio','Desconto exclusivo para membros do grupo.'],['beneficio','Material vitalício + futuras atualizações.'],['beneficio','Suporte vitalício incluso.'],['beneficio','Sem mensalidade, sem pegadinhas.'],['beneficio','Cancelamento a qualquer momento.'],['beneficio','Não precisa ter experiência prévia.'],['beneficio','Você aprende mesmo sendo iniciante.'],['beneficio','Método validado por {{N}} pessoas.'],['beneficio','Economia de até R$ {{VALOR}}.'],['beneficio','Seu dinheiro de volta se não gostar.'],['beneficio','Atendimento das {{HORARIO_1}} às {{HORARIO_2}}.'],['beneficio','Sistema testado e aprovado.'],['beneficio','Mais praticidade no seu dia a dia.'],['beneficio','Solução completa em um só lugar.'],['beneficio','Resultado em curto, médio e longo prazo.'],['beneficio','Você começa a ver diferença em {{TEMPO}}.'],['beneficio','Fácil de usar — sem complicação.'],['beneficio','Você economiza tempo e dinheiro.'],['beneficio','Automatize tarefas repetitivas.'],['beneficio','Ganhe mais tempo com o que importa.'],['beneficio','Do básico ao avançado em {{TEMPO}}.'],['beneficio','Metodologia passo a passo.'],['beneficio','Ferramentas complementares inclusas.'],['beneficio','Comunidade exclusiva de alunos.'],['beneficio','Networking qualificado garantido.'],['beneficio','Consultoria inicial gratuita.'],['beneficio','Análise personalizada do seu caso.'],['beneficio','Plano de ação sob medida.'],['beneficio','Acompanhamento profissional contínuo.'],['beneficio','Cobre tudo que você precisa saber.'],['beneficio','Direto ao ponto, sem enrolação.'],['beneficio','Atualizado para {{ANO}}.'],['beneficio','Baixo investimento, alto retorno.'],['beneficio','Solução imediata para seu problema.'],
+['objecao','Você deve estar pensando: "isso é muito caro". Mas quanto custa continuar como está?'],['objecao','"Não tenho tempo" — este é justamente para quem tem pouco tempo.'],['objecao','"Não sei se funciona para mim" — foi feito para você.'],['objecao','"Já tentei de tudo" — você ainda não tentou isso.'],['objecao','"Está fora do meu orçamento" — cabe em {{PARCELAMENTO}}.'],['objecao','"Não sou de tecnologia" — não precisa ser. É simples.'],['objecao','"Vai dar certo mesmo?" — mais de {{N}} pessoas já provaram.'],['objecao','"Depois eu vejo" — depois pode ser mais caro.'],['objecao','"Meu caso é diferente" — atende todos os perfis.'],['objecao','"Já vi coisa parecida" — mas nunca com esse resultado.'],['objecao','"Prefiro esperar" — o preço só sobe.'],['objecao','"Parece bom demais" — e é real, com garantia.'],['objecao','"Vou pensar melhor" — quanto vale ter isso resolvido?'],['objecao','"Não acredito nessas coisas" — não acredite: teste.'],['objecao','"Não conheço o produto" — tem depoimentos reais.'],['objecao','"É seguro?" — pagamento 100% seguro.'],['objecao','"E se eu não gostar?" — 7 dias para devolução.'],['objecao','"Não sei se consigo acompanhar" — você tem suporte.'],['objecao','"Já gastei muito antes" — esse investimento é único.'],['objecao','"Vai funcionar pro meu nicho?" — funciona em qualquer.'],['objecao','"Preciso pensar" — você quer, só tem medo.'],['objecao','"Talvez seja golpe" — empresa registrada e com reputação.'],['objecao','"Não tenho como pagar agora" — parcelamos em até {{N}}x.'],['objecao','"Meu caso é complexo" — para isso existem especialistas.'],['objecao','"Prefiro fazer sozinho" — você já tentou e não deu certo.'],['objecao','"Vou esperar a próxima" — pode não ter próxima.'],['objecao','"Não confio em compra online" — nota fiscal + garantia.'],['objecao','"Tenho medo de não dar certo" — e o medo de não tentar?'],['objecao','"Achei caro" — mais caro é ficar parado.'],['objecao','"Vou esperar baixar" — o preço vai subir.'],['objecao','"Deve ser complicado" — é mais fácil do que imagina.'],['objecao','"Não sei se é pra mim" — é pra quem quer resultado.'],['objecao','"Não tenho tempo para isso" — sem isso você perde tempo.'],['objecao','"Meu negócio é diferente" — resultados para todos os tipos.'],['objecao','"Prefiro testar antes" — o primeiro contato é grátis.'],['objecao','"Isso é muito avançado" — é passo a passo.'],['objecao','"Vou ver com calma" — tempo é dinheiro.'],['objecao','"Não me sinto pronto" — você aprende no caminho.'],['objecao','"E se não funcionar?" — devolvemos seu dinheiro.'],['objecao','"Prefiro o mais barato" — o barato sai caro.'],['objecao','"Acho que não é pra agora" — é exatamente pra agora.'],['objecao','"Não uso redes sociais" — não precisa usar.'],['objecao','"Não sei se cabe no meu bolso" — cabe sim, veja o parcelamento.'],['objecao','"Tenho medo de perder dinheiro" — aqui você tem garantia.'],['objecao','"É muito texto para ler" — mas pode te mudar.'],['objecao','"Não entendi tudo" — chama no WhatsApp que explico.'],['objecao','"Prefiro comprar depois" — depois pode não ter.'],['objecao','"Vou esperar meus sócios decidirem" — o tempo corre.'],['objecao','"Não estou pronto financeiramente" — existem opções.'],['objecao','"Talvez não seja o momento" — nunca é o momento perfeito.'],['objecao','"Será que vale mesmo?" — vale cada centavo.'],
+['fechamento','Você tem duas opções: continuar como está ou dar o primeiro passo. Qual escolhe?'],['fechamento','O que você faria se soubesse que não pode falhar?'],['fechamento','Bora começar hoje?'],['fechamento','Se você quer mudar, é agora.'],['fechamento','A decisão que muda tudo está nas suas mãos.'],['fechamento','Em 30 dias você pode estar em outro patamar.'],['fechamento','Sua melhor versão começa hoje.'],['fechamento','Não adie mais seu sonho.'],['fechamento','A hora é agora.'],['fechamento','Vem fazer parte desse time.'],['fechamento','Você merece isso. Eu sei que sim.'],['fechamento','Junte-se a {{N}} pessoas que já decidiram.'],['fechamento','Está na hora de você dar esse passo.'],['fechamento','O próximo capítulo da sua história começa aqui.'],['fechamento','Vou te esperar do outro lado.'],['fechamento','Você não vai se arrepender.'],['fechamento','Uma decisão separa você do próximo nível.'],['fechamento','Não é sobre o custo, é sobre o valor.'],['fechamento','Todo mundo que tentou, não se arrependeu.'],['fechamento','Venha fazer parte dessa transformação.'],['fechamento','Se eu consegui, você também consegue.'],['fechamento','Deixa eu te ajudar a dar o próximo passo.'],['fechamento','Comece hoje. Agradeça amanhã.'],['fechamento','Você está a um clique da mudança.'],['fechamento','Não deixa o medo te parar.'],['fechamento','Bora fazer diferente?'],['fechamento','Você vai olhar pra trás e dizer: valeu a pena.'],['fechamento','Eu acredito em você. Confie também.'],['fechamento','Se você chegou até aqui, é sinal.'],['fechamento','É o seu momento.'],['fechamento','Você vai fazer isso por você?'],['fechamento','Toma a decisão hoje.'],['fechamento','Vem comigo nessa!'],['fechamento','Do zero ao topo em {{TEMPO}}.'],['fechamento','O primeiro passo é o mais importante.'],['fechamento','Não espere mais.'],['fechamento','Vai, você merece!'],['fechamento','Juntos vamos mais longe.'],['fechamento','Se inscreva agora e veja a diferença.'],['fechamento','Confia: você não vai se arrepender.'],['fechamento','Bora? Eu tô te esperando.']
 ];
 
 const COPIES=C_RAW.map((c,i)=>({id:'c'+i,cat:c[0],text:c[1]}));
 
 const COPY_CATS={
-  all:'Todas',
-  hook:'Ganchos / Headlines',
-  cta:'Chamadas para Ação',
-  urgencia:'Urgência & Escassez',
-  social:'Prova Social',
-  beneficio:'Benefícios',
-  objecao:'Quebra de Objeção',
-  fechamento:'Fechamentos'
+  all:'Todas',hook:'Ganchos / Headlines',cta:'Chamadas para Ação',
+  urgencia:'Urgência & Escassez',social:'Prova Social',beneficio:'Benefícios',
+  objecao:'Quebra de Objeção',fechamento:'Fechamentos'
 };
 
 /* =========================================================================
@@ -5614,7 +5052,7 @@ const DEFAULT_VARIABLES={
   FOTO_TIPO_1:'',FOTO_TIPO_2:'',FOTO_TIPO_3:'',AUDIO_1:'',AUDIO_2:'',AUDIO_3:'',
   FONTE_TIPO_1:'',FONTE_TIPO_2:'',FONTE_TIPO_3:'',FINALIDADE:'',CATEGORIA:'',CATEGORIA_1:'',
   CATEGORIA_2:'',CATEGORIA_3:'',CATEGORIA_4:'',PREMIO:'',PREMIO_1:'',PREMIO_2:'',PREMIO_3:'',
-  DATA_SORTEIO:'',DATA_INICIO:'',DATA_FIM:'',HORAS:'',PALAVRA:'',SITUACAO_1:'',SITUACAO_2:'',
+  DATA_SORTEIO:'',HORAS:'',PALAVRA:'',SITUACAO_1:'',SITUACAO_2:'',
   NOTA:'',NOTA_1:'',NOME:'',NOMES_FAMOSOS:'',PARCERIAS:'',VEICULO:'',VEICULO_2:'',
   HORAS_1:'',HORAS_2:'',CERTIFICACAO:'',CONDICAO:'',CORES:'',MATERIAL:'',PESO:'',
   PROBLEMA:'',PROBLEMA_1:'',MUDANCA_1:'',MUDANCA_2:'',MUDANCA_3:'',VERSAO:'',CONDICAO_1:'',
@@ -5622,7 +5060,8 @@ const DEFAULT_VARIABLES={
   SUSTENTACAO:'',TEMPO_RESPOSTA:'',TEMPO_USO:'',ACESSORIOS:'',VALOR_ESGOTOU:'',TEMPO_ESGOTOU:'',
   FLUXO:'',DOCUMENTACAO:'',INFRAESTRUTURA:'',PE_DIREITO:'',DOCAS:'',ENERGIA:'',VISTA:'',
   RENTABILIDADE:'',DESTAQUE_1:'',DESTAQUE_2:'',DESTAQUE_3:'',INGRESSO:'',PALESTRANTE:'',
-  PERCENTUAL_1:'',PERCENTUAL_2:'',PERCENTUAL_3:'',DESCONTO_1:'',DESCONTO_2:'',DESCONTO_3:''
+  PERCENTUAL_1:'',PERCENTUAL_2:'',PERCENTUAL_3:'',DESCONTO_1:'',DESCONTO_2:'',DESCONTO_3:'',
+  FORMATO:'',DIMENSOES:'',ESTOQUE:''
 };
 
 /* =========================================================================
@@ -5639,6 +5078,7 @@ const state={
   variables:{...DEFAULT_VARIABLES},
   template:null,content:'',images:[],
   selectedTemplateCat:'all',selectedTemplateType:'all',
+  templateSearch:'',
   selectedCopyCat:'all',copySearch:'',
   historyFilter:'all',selectedHistoryId:null,
   analyticsTab:'all'
@@ -5781,8 +5221,8 @@ function render(){
   const titles={
     dashboard:['Dashboard','Visão geral dos seus anúncios e grupos'],
     generator:['Gerador de Anúncios','Escolha template, preencha variáveis e adicione imagens'],
-    templates:['Templates','250 modelos prontos para produtos físicos, digitais e serviços'],
-    copies:['Copys Persuasivas','500 textos prontos para turbinar seus anúncios'],
+    templates:['Templates',`${TEMPLATES.length} modelos prontos para produtos físicos, digitais e serviços`],
+    copies:['Copys Persuasivas',`${COPIES.length} textos prontos para turbinar seus anúncios`],
     images:['Biblioteca de Imagens','Todas as imagens dos seus anúncios'],
     history:['Histórico','Todos os anúncios gerados anteriormente'],
     groups:['Meus Grupos','Gerencie os grupos do Facebook onde você publica'],
@@ -5813,7 +5253,7 @@ function renderMainActions(){
     analytics:`<button type="button" class="btn btn--ghost btn--sm" data-action="print">Imprimir</button>`
   };
   wrap.innerHTML=b[state.view]||'';
-  wrap.querySelectorAll('[data-action]').forEach(x=>x.addEventListener('click',()=>handleAction(x.dataset.action)));
+  // ✅ FIX: NÃO faz binding direto aqui. O listener delegado global cuida disso.
 }
 
 function handleAction(a){
@@ -5835,6 +5275,7 @@ function handleAction(a){
         if(ok){state.images=[];lsSet(LS.images,[]);updateBadges();render();toast('Imagens removidas.')}
       });break;
     case 'copy-all-copies':exportAllCopies();break;
+    case 'fill-demo':fillDemoVariables();break;
   }
 }
 
@@ -5849,9 +5290,7 @@ function renderSidebarCategories(){
       <span class="nav-item__badge">${counts[k]||0}</span>
     </button>
   `).join('');
-  wrap.querySelectorAll('[data-cat-go]').forEach(x=>{
-    x.addEventListener('click',()=>{state.selectedTemplateCat=x.dataset.catGo;setView('templates')});
-  });
+  // ✅ FIX: Sem binding direto — listener delegado global com closest() cuida.
 }
 
 function renderMainContent(){
@@ -6402,7 +5841,7 @@ function renderAnalytics(){
 }
 
 /* =========================================================================
-   RIGHT PANEL — PREVIEW
+   RIGHT PANEL
    ========================================================================= */
 function renderRightPanel(){
   const wrap=$('right-scroll');
@@ -6487,7 +5926,10 @@ function renderRightPanel(){
    BIND MAIN EVENTS
    ========================================================================= */
 function bindMainEvents(){
-  document.querySelectorAll('[data-view-go]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.viewGo)));
+  // data-view-go (delegação local — elementos são recriados a cada render)
+  document.querySelectorAll('[data-view-go]').forEach(b=>{
+    b.addEventListener('click',()=>setView(b.dataset.viewGo));
+  });
 
   // Templates
   document.querySelectorAll('[data-tpl-id]').forEach(el=>{
@@ -6525,26 +5967,38 @@ function bindMainEvents(){
   document.querySelectorAll('[data-copy-insert]').forEach(b=>{
     b.addEventListener('click',()=>{
       const text=b.dataset.copyInsert;
-      if(!state.content&&!state.template){
+      // ✅ FIX: se não há template, criar um "template personalizado" para o gerador abrir o editor
+      if(!state.template){
+        state.template={
+          id:'custom',
+          name:'Anúncio Personalizado',
+          desc:'Criado a partir de uma copy',
+          cat:'promocao',type:'geral',
+          content:text
+        };
         state.content=text;
-        toast('Copy adicionada como novo anúncio.','brand');
       }else{
-        state.content=(state.content||state.template?.content||'')+'\n\n'+text;
-        toast('Copy inserida no final.','brand');
+        state.content=(state.content||state.template.content||'')+'\n\n'+text;
       }
+      saveAll();
       setView('generator');
-      setTimeout(()=>{const ta=$('ad-content');if(ta){ta.value=state.content;updateCharCount()}},100);
+      setTimeout(()=>{
+        const ta=$('ad-content');
+        if(ta){ta.value=state.content;updateCharCount();renderRightPanel()}
+      },80);
+      toast('Copy inserida no anúncio.','brand');
     });
   });
 
   // Generator — variables
+  // ✅ FIX: NÃO reaplica variáveis em state.content (que é a versão "editável" com placeholders).
+  // Aplicar variáveis só afeta o preview (renderRightPanel) e o contador de caracteres.
   document.querySelectorAll('[data-var-input]').forEach(inp=>{
     inp.addEventListener('input',()=>{
       state.variables[inp.dataset.varInput]=inp.value;
       saveAll();
-      const ta=$('ad-content');
-      if(ta){state.content=applyVariables(state.content||state.template?.content||'');ta.value=state.content}
-      updateCharCount();renderRightPanel();
+      updateCharCount();
+      renderRightPanel();
     });
   });
 
@@ -6565,14 +6019,18 @@ function bindMainEvents(){
   }
   updateCharCount();
 
-  // Insert var chips
+  // Insert var chips — ✅ FIX cursor
   document.querySelectorAll('[data-insert-var]').forEach(b=>{
     b.addEventListener('click',()=>{
       const k=b.dataset.insertVar;
       const ta=$('ad-content');if(!ta)return;
-      const pos=ta.selectionStart;const text=ta.value;
-      const nt=text.slice(0,pos)+`{{${k}}}`+text.slice(pos);
-      ta.value=nt;ta.focus();ta.setSelectionRange(pos+k.length+4,pos+k.length+4);
+      const pos=ta.selectionStart ?? ta.value.length;
+      const text=ta.value;
+      const insert=`{{${k}}}`;
+      const nt=text.slice(0,pos)+insert+text.slice(pos);
+      ta.value=nt;
+      const newPos=pos+insert.length;
+      ta.focus();ta.setSelectionRange(newPos,newPos);
       state.content=nt;updateCharCount();renderRightPanel();
     });
   });
@@ -6609,11 +6067,17 @@ function bindMainEvents(){
   document.querySelectorAll('[data-history-id]').forEach(el=>{
     el.addEventListener('click',e=>{
       if(e.target.closest('button'))return;
-      state.selectedHistoryId=el.dataset.historyId;renderRightPanel();
+      state.selectedHistoryId=el.dataset.historyId;
+      renderRightPanel();
     });
   });
   document.querySelectorAll('[data-history-go]').forEach(el=>{
-    el.addEventListener('click',()=>{state.selectedHistoryId=el.dataset.historyGo;setView('history')});
+    el.addEventListener('click',()=>{
+      state.selectedHistoryId=el.dataset.historyGo;
+      setView('history');
+      // ✅ FIX: garante que o painel direito reflita o item clicado
+      renderRightPanel();
+    });
   });
   document.querySelectorAll('[data-history-copy]').forEach(b=>{
     b.addEventListener('click',async e=>{
@@ -6756,7 +6220,7 @@ function saveAdToHistory(){
   if(!content){toast('Nada para salvar.','error');return}
   const final=applyVariables(content);
   const firstLine=final.split('\n').find(l=>l.trim())||'Anúncio';
-  const title=firstLine.replace(/[🔴🟠🟡🟢🔵🟣⚫⚪🔥💥✨🎉🎓💼🚀📢📣🛒💡🎁📍🏠👥🤝💰📱📲👇👉🖤💚❤️💜🧡💙🤍♿🎬🍕🍔🍰🧁🍱📸✨🌊]/g,'').trim().substring(0,60)||'Sem título';
+  const title=firstLine.replace(/[^\w\s]/g,'').trim().substring(0,60)||'Sem título';
   state.history.unshift({
     id:uid(),title,content:final,rawContent:content,
     templateId:state.template?.id||null,
@@ -6849,7 +6313,10 @@ function saveVariable(){
    BIND GLOBAL
    ========================================================================= */
 function bindGlobal(){
+  // Navegação da sidebar
   document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+
+  // Botões do header
   $('btn-new-ad').addEventListener('click',()=>{state.template=null;state.content='';state.images=[];setView('generator')});
   $('btn-random').addEventListener('click',()=>{
     const t=TEMPLATES[Math.floor(Math.random()*TEMPLATES.length)];loadTemplate(t.id);
@@ -6860,6 +6327,7 @@ function bindGlobal(){
   $('btn-export-txt').addEventListener('click',exportTxt);
   $('btn-print').addEventListener('click',()=>window.print());
 
+  // Dialogs
   $('group-cancel').addEventListener('click',()=>$('group-dialog').close());
   $('group-save').addEventListener('click',saveGroup);
   $('group-form').addEventListener('submit',e=>{e.preventDefault();saveGroup()});
@@ -6870,11 +6338,33 @@ function bindGlobal(){
   $('variable-save').addEventListener('click',saveVariable);
   $('variable-form').addEventListener('submit',e=>{e.preventDefault();saveVariable()});
 
+  /* =====================================================================
+     ✅ FIX CRÍTICO #1 — Listener DELEGADO GLOBAL para [data-action]
+     Antes, apenas botões dentro de `.main__actions` eram vinculados.
+     Botões em empty-states e generator (data-action="fill-demo") não funcionavam.
+     Agora, qualquer clique em qualquer elemento com [data-action] é roteado.
+     ===================================================================== */
   document.addEventListener('click',e=>{
-    if(e.target.matches('[data-action="fill-demo"]'))fillDemoVariables();
-    if(e.target.matches('[data-cat-go]')){state.selectedTemplateCat=e.target.dataset.catGo;setView('templates')}
+    const actionEl=e.target.closest('[data-action]');
+    if(actionEl){
+      handleAction(actionEl.dataset.action);
+      return;
+    }
+    /* =====================================================================
+       ✅ FIX CRÍTICO #2 — Delegado para [data-cat-go] usando closest()
+       Antes usava e.target.matches → falhava ao clicar em ícones/textos filhos.
+       E havia dupla vinculação na sidebar → renderização dupla.
+       Agora: delegação única via closest().
+       ===================================================================== */
+    const catEl=e.target.closest('[data-cat-go]');
+    if(catEl){
+      state.selectedTemplateCat=catEl.dataset.catGo;
+      setView('templates');
+      return;
+    }
   });
 
+  // Atalhos de teclado
   document.addEventListener('keydown',e=>{
     const c=e.ctrlKey||e.metaKey;
     if(c&&e.key==='n'&&!e.shiftKey){e.preventDefault();state.template=null;state.content='';state.images=[];setView('generator')}
@@ -6893,13 +6383,12 @@ function fillDemoVariables(){
     TEMA:'Marketing Digital',PUBLICO:'empreendedores e profissionais',LINK:'https://exemplo.com',
     EMAIL:'contato@exemplo.com',SITE:'www.exemplo.com',CIDADE:'São Paulo',AREA:'Brasil',
     PRAZO:'3 a 5 dias úteis',GARANTIA:'90 dias',PESO:'0,5',DIMENSOES:'20x15x10cm',ESTOQUE:'50 unidades',
-    FORMATO:'PDF e Vídeo',ACESSO:'Vitalício',SUPORTE:'WhatsApp e E-mail',PLATAFORMA:'Hotmaart'
+    FORMATO:'PDF e Vídeo',ACESSO:'Vitalício',SUPORTE:'WhatsApp e E-mail',PLATAFORMA:'Hotmart'
   };
   extractVariables(state.template.content).forEach(v=>{
     if(demo[v])state.variables[v]=demo[v];
     else if(!state.variables[v])state.variables[v]='[preencha]';
   });
-  state.content=applyVariables(state.template.content);
   saveAll();render();toast('Variáveis preenchidas com exemplo.','brand');
 }
 
